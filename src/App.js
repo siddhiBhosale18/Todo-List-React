@@ -1,6 +1,7 @@
 
 import './App.css';
 import { useState } from 'react';
+import TodoForm from './components/TodoForm';
 
 function App() {
   const [todo,setTodo]=useState("");
@@ -44,10 +45,7 @@ const handleEdit=(id)=>{
      <div className='App'>
       <div className='container'>
         <h1>Todo List App</h1>
-        <form className='todoForm' onSubmit={handleSubmit}>
-          <input type="text" value={todo} onChange={(e)=>setTodo(e.target.value)}/>
-          <button type='submit'>{editId ?"Edit":"Go"}</button>
-        </form>
+       <TodoForm  handleSubmit={handleSubmit} todo={todo} setTodo={setTodo} editId={editId}/>
         <ul className='allTodos'>
           { todos.map((t)=>(
               <li className='singleTodo'>
